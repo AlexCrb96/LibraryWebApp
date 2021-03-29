@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\alexc\AppData\Local\JetBrains\Rider2020.3\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\alexc\AppData\Local\JetBrains\Rider2020.3\resharper-host\Local\Transient\Rider\v203\SolutionCaches\_LibraryWebApp.-1146759108.00" t="ExcludeRecursive" />
+    <e p="C:\Users\alexc\source\repos\LibraryWebApp" t="IncludeFlat">
+      <e p="LibraryWebApp" t="IncludeRecursive">
+        <e p="appsettings.Development.json" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Controllers" t="Include">
+          <e p="AuthorController.cs" t="Include" />
+          <e p="BookController.cs" t="Include" />
+          <e p="LibraryController.cs" t="Include" />
+          <e p="ReviewController.cs" t="Include" />
+          <e p="WeatherForecastController.cs" t="Include" />
+        </e>
+        <e p="Entities" t="Include">
+          <e p="Author.cs" t="Include" />
+          <e p="AuthorBooks.cs" t="Include" />
+          <e p="Book.cs" t="Include" />
+          <e p="RatingAndReview.cs" t="Include" />
+        </e>
+        <e p="LibraryWebApp.csproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="LibraryWebApp.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Payloads" t="Include">
+          <e p="AuthorRequest.cs" t="Include" />
+          <e p="AuthorResponse.cs" t="Include" />
+          <e p="BookRequest.cs" t="Include" />
+          <e p="BookResponse.cs" t="Include" />
+          <e p="ReviewRequest.cs" t="Include" />
+          <e p="ReviewResponse.cs" t="Include" />
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+        </e>
+        <e p="Repositories" t="Include">
+          <e p="AuthorBooksRepository.cs" t="Include" />
+          <e p="AuthorRepository.cs" t="Include" />
+          <e p="BookRepository.cs" t="Include" />
+          <e p="RatingAndReviewRepository.cs" t="Include" />
+        </e>
+        <e p="Services" t="Include">
+          <e p="AuthorService.cs" t="Include" />
+          <e p="BookService.cs" t="Include" />
+          <e p="ReviewService.cs" t="Include" />
+        </e>
+        <e p="Startup.cs" t="Include" />
+        <e p="Utils" t="Include">
+          <e p="DbUtils.cs" t="Include" />
+        </e>
+        <e p="WeatherForecast.cs" t="Include" />
+      </e>
+      <e p="LibraryWebApp.sln" t="IncludeFlat" />
+      <e p="packages" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
