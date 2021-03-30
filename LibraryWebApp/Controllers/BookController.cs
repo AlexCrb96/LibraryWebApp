@@ -1,5 +1,6 @@
 ﻿using LibraryWebApp.Entities;
 using LibraryWebApp.Services;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -49,6 +50,12 @@ namespace LibraryWebApp.Controllers
         public void Delete(Guid insb)
         {
             bookService.DeleteBook(insb);
+        }
+
+        [HttpPatch("{insb}")]
+        public void Patch(Guid insb, [FromBody] JsonPatchDocument<Book> bookPatch)
+        {
+            bookService.PatchBook(insb, bookPatch);
         }
     }
 }

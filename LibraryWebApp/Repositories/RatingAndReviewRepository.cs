@@ -30,6 +30,13 @@ namespace LibraryWebApp.Repositories
             DbUtils.ExecuteNonQuery(_connection, sql);
         }
 
+        public void RemoveReviewByBook(Guid guid)
+        {
+            String sql = "DELETE FROM Reviews WHERE book_id = '" + guid.ToString() + "'";
+            DbUtils.ExecuteNonQuery(_connection, sql);
+        }
+
+
         public void UpdateReview(int id, RatingAndReview review)
         {
             String sql = "UPDATE Reviews SET Rating ='" + review.Rating +

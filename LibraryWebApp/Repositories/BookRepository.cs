@@ -37,8 +37,9 @@ namespace LibraryWebApp.Repositories
 
         public void RemoveBook(Guid insb)
         {
-            /* TODO - inainte sa stergi cartea trebuie sa stergi legaturile catre autori si reviewuri */
-            String sql = "DELETE FROM Books WHERE insb = '" + insb.ToString() + "'";
+            String sql = "DELETE FROM AuthorBooks WHERE book_id = '" + insb.ToString() + "'";
+            DbUtils.ExecuteNonQuery(_connection, sql);
+            sql = "DELETE FROM Books WHERE insb = '" + insb.ToString() + "'";
             DbUtils.ExecuteNonQuery(_connection, sql);
         }
 
@@ -50,13 +51,16 @@ namespace LibraryWebApp.Repositories
                          "' WHERE Insb ='" + b.Insb.ToString() + "'";
             DbUtils.ExecuteNonQuery(_connection, sql);
 
-            sql = "DELETE FROM AuthorBooks WHERE book_id = '" + b.Insb + "'";
-
-            b.AuthorsId.ForEach(authorId =>
+            if (b.AuthorsId != null)
             {
-                sql = "INSERT INTO AuthorBooks (author_id, book_id) VALUES ('" + authorId + "','" + b.Insb + "')";
-                DbUtils.ExecuteNonQuery(_connection, sql);
-            });
+                sql = "DELETE FROM AuthorBooks WHERE book_id = '" + b.Insb + "'";
+
+                b.AuthorsId.ForEach(authorId =>
+                {
+                    sql = "INSERT INTO AuthorBooks (author_id, book_id) VALUES ('" + authorId + "','" + b.Insb + "')";
+                    DbUtils.ExecuteNonQuery(_connection, sql);
+                });
+            }
         }
 
         public Book SelectBookByInsb(Guid insb)
@@ -77,7 +81,6 @@ namespace LibraryWebApp.Repositories
                             Int32.Parse(reader["numberOfPages"].ToString()),
                             null, Double.Parse(reader["price"].ToString()), Int32.Parse(reader["stock"].ToString()));
 
-                        /* TODO - adaugi in listele de autori si reviews cu ajutorul claselor */
 
 
                     }
@@ -120,7 +123,6 @@ namespace LibraryWebApp.Repositories
                             Int32.Parse(reader["numberOfPages"].ToString()),
                             null, Double.Parse(reader["price"].ToString()), Int32.Parse(reader["stock"].ToString())));
 
-                        /* TODO - adaugi in listele de autori si reviews cu ajutorul claselor */
 
                     }
                 }
@@ -166,7 +168,6 @@ namespace LibraryWebApp.Repositories
                             Int32.Parse(reader["numberOfPages"].ToString()),
                             reviews, Double.Parse(reader["price"].ToString()), Int32.Parse(reader["stock"].ToString())));
 
-                        /* TODO - adaugi in listele de autori si reviews cu ajutorul claselor */
 
                     }
                 }

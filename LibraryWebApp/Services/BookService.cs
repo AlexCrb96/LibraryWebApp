@@ -1,5 +1,6 @@
 ﻿using LibraryWebApp.Entities;
 using LibraryWebApp.Repositories;
+using Microsoft.AspNetCore.JsonPatch;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,6 @@ namespace LibraryWebApp.Services
         {
             return bookRepository.SelectAllBooks().ConvertAll<BookResponse>(book => 
             {
-
                 List<Author> authors = authorRepository.SelectAuthorByBookInsb(book.Insb);
                 List<RatingAndReview> reviews = ratingAndReviewRepository.SelectAllReviewsByBookInsb(book.Insb);
                 return new BookResponse(book.Insb, book.Title, authors, book.CreationDate, book.NumberOfPages, reviews, book.Price, book.StockAvailable);
@@ -40,6 +40,7 @@ namespace LibraryWebApp.Services
 
         public void DeleteBook(Guid insb)
         {
+            ratingAndReviewRepository.RemoveReviewByBook(insb);
             bookRepository.RemoveBook(insb);
         }
 
@@ -53,6 +54,13 @@ namespace LibraryWebApp.Services
         {
             Book book = new Book(Guid.NewGuid(), bookRequest.Title, bookRequest.CreationDate, bookRequest.NumberOfPages, bookRequest.Price, bookRequest.StockAvailable, bookRequest.AuthorIds);
             bookRepository.AddBook(book);
+        }
+
+        public void PatchBook(Guid insb, JsonPatchDocument<Book> bookPatch)
+        {
+            Book book = bookRepository.SelectBookByInsb(insb);
+            bookPatch.ApplyTo(book);
+            bookRepository.UpdateBook(book);
         }
     }
 }
