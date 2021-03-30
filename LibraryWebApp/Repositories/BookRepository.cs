@@ -54,6 +54,7 @@ namespace LibraryWebApp.Repositories
             if (b.AuthorsId != null)
             {
                 sql = "DELETE FROM AuthorBooks WHERE book_id = '" + b.Insb + "'";
+                DbUtils.ExecuteNonQuery(_connection, sql);
 
                 b.AuthorsId.ForEach(authorId =>
                 {

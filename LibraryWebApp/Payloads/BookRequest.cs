@@ -1,46 +1,22 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace LibraryWebApp.Entities
 {
     public class BookRequest
     {
-        private string title;
-        private DateTime creationDate;
-        private int numberOfPages;
-        private double price; 
-        private int stockAvailable;
-        private List<int> authorIds;
+        [Required]
+        public string Title { get; set; }
 
-        public string Title
-        {
-            get => title;
-            set => title = value;
-        }
+        public DateTime CreationDate { get; set; }
 
-        public DateTime CreationDate
-        {
-            get => creationDate;
-            set => creationDate = value;
-        }
+        public int NumberOfPages { get; set; }
 
-        public int NumberOfPages
-        {
-            get => numberOfPages;
-            set => numberOfPages = value;
-        }
-
-        public int StockAvailable 
-        { 
-            get => stockAvailable; 
-            set => stockAvailable = value;
-        }
-        public double Price 
-        {
-            get => price;
-            set => price = value; 
-        }
-        public List<int> AuthorIds { get => authorIds; set => authorIds = value; }
+        public int StockAvailable { get; set; }
+        public double Price { get; set; }
+        [Required]
+        public List<int> AuthorIds { get; set; }
 
         public BookRequest(string title, int year, int month, int day, int nOP, double price, int stockAvailable) : this(title,
             new DateTime(year, month, day), nOP, price, stockAvailable){}
@@ -49,11 +25,11 @@ namespace LibraryWebApp.Entities
         public BookRequest(string title, DateTime creationDate, int numberOfPages,
            double price, int stockAvailable)
         {
-            this.title = title;
-            this.creationDate = creationDate;
-            this.numberOfPages = numberOfPages;
-            this.price = price;
-            this.stockAvailable = stockAvailable;
+            this.Title = title;
+            this.CreationDate = creationDate;
+            this.NumberOfPages = numberOfPages;
+            this.Price = price;
+            this.StockAvailable = stockAvailable;
         }
 
         public BookRequest()

@@ -4,28 +4,26 @@ namespace LibraryWebApp.Entities
 {
     public class Author 
     {
-        private int id;
-        private string name;
-        private List<BookResponse> books;
 
-        public int Id { get => id; set => id = value; }
-        public string Name { get => name; set => name = value; }
-        public List<BookResponse> Books { get => books; set => books = value; }
+        public int Id { get ; set; }
+        
+        public string Name { get; set; }
+        public List<BookResponse> Books { get; set; }
 
         public Author(int id, string name, List<BookResponse> books) : this(id, name)
         {
-            this.books = books;
+            this.Books = books;
         }
 
         public Author(int id, string name)
         {
-            this.id = id;
-            this.name = name;
+            this.Id = id;
+            this.Name = name;
         }
 
         public Author(string name)
         {
-            this.name = name;
+            this.Name = name;
         }
         public Author()
         {
